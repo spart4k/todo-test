@@ -9,5 +9,6 @@
     transition: background-color $transitionTheme;
     border-radius: 5px;
     padding: $notePadding;
+    cursor: pointer;
   }
 }

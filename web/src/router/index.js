@@ -26,6 +26,18 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: NoteView,
   },
+  {
+    path: '/:id',
+    name: 'edit',
+    meta: {
+      layout: 'blank-layout',
+      mode: 'edit',
+    },
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: NoteView,
+  },
 ]
 
 // Добавил фикс для варнингов - причина не известна, решение: https://stackoverflow.com/questions/62462276/how-to-solve-avoided-redundant-navigation-to-current-location-error-in-vue

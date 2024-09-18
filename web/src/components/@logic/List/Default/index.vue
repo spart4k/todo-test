@@ -1,6 +1,11 @@
 <template>
   <div class="note-list">
-    <Note v-for="note in 10" :note="note" />
+    <Note
+      @click="openNote(note)"
+      v-for="note in mockData"
+      :key="note.id"
+      :note="note"
+    />
   </div>
 </template>
 

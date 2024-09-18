@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { nextTick, onMounted, ref, watch } from 'vue'
+import { nextTick, onMounted, reactive, ref, watch } from 'vue'
 export default {
   name: 'App',
   components: {},

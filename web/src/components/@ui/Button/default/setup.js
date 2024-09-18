@@ -1,7 +1,7 @@
 import Vue from 'vue'
 
 export default {
-  name: 'Name',
+  name: 'Btn-Default',
   components: {},
   props: {
     color: {

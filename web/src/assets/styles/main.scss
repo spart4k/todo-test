@@ -58,3 +58,13 @@ $borderColor: rgba(0, 0, 0, 0.3);
   display: -webkit-inline-box;
   padding-block: 5rem;
 }
+
+.field {
+  &-text {
+    border: 0;
+    outline: none;
+    background-color: inherit;
+    transition: background-color, color $transitionTheme;
+    color: var(--font-color);
+  }
+}

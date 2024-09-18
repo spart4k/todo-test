@@ -1,12 +1,17 @@
 import Vue from 'vue'
 
-import Todo from '../components/Todo/Default'
+import { Default as Todo } from '../components/Todo'
 export default {
-  name: 'Name',
+  name: 'Todo-Short',
   components: {
     Todo,
   },
-  props: {},
+  props: {
+    note: {
+      type: Object,
+      default: () => {},
+    },
+  },
   setup(props, context) {
     return {}
   },

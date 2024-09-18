@@ -9,20 +9,34 @@
 
 <script>
 import List from '@/components/@logic/List/Default'
-import { useRouter } from 'vue-router/composables'
+import { useRoute, useRouter } from 'vue-router/composables'
+import { onMounted } from 'vue'
 
 export default {
   name: 'Home-View',
+  props: {
+    mockData: {
+      type: Object,
+      default: () => {},
+    },
+  },
   components: {
     List,
   },
   setup() {
     const router = useRouter()
+    const route = useRoute()
     const toAdd = () => {
-      router.push('/add')
+      router.push({
+        name: 'add',
+      })
     }
+    onMounted(() => {
+      console.log(route)
+    })
     return {
       toAdd,
+      route,
     }
   },
 }

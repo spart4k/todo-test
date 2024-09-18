@@ -2,6 +2,21 @@
   display: flex;
 }
 
+.justify-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.align-center {
+  display: flex;
+  align-items: center;
+}
+
+.align-start {
+  display: flex;
+  align-items: start;
+}
+
 .title-h3 {
   @include h3;
 }
