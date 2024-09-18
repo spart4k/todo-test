@@ -1,0 +1,103 @@
+$fontSizeTest: 50px;
+
+//z-index
+$default-z: 1; //деваулт значение
+$popup-z: 20; //для попапа
+$in-popup-z: 30; //Для попапа в попапе
+$context-z: 5; //контекстные штуки
+$stiky-z: 10; //стики элементы
+$navbar-z: 11; //Боковое меню
+$black-bg: 19; //затемнение фона
+$high-level: 9999; //для элементов изначально наверху прям 100%
+$low-level: -9999; //для элементов которые опускаются в низ
+$navbar-mobile-z: 1000; //для попапа из мобилки
+$panelHeight: 64px;
+
+// основные переменные
+$offcanvas-width: 220px; // отступ рабочей зоны при открытом  sidebar
+$topNavbarHeight: 41px; //высота отступа сверху
+$offcanvas-help-width: 400px; // пока хз что это
+$gap-cells-page: 20px;
+$gap-ui-elements: 15px;
+$offcanvas-width-roll-up: 40px;
+$overlay: rgba(0, 0, 0, 0.3);
+$overlayZIndex: 100;
+$sheetWidth: 440px;
+$mobileWidth: 768px;
+$white: #fff;
+
+// Переходы
+$transitionTheme: 0.1s;
+// #app {
+//   &.theme {
+//     &--dark {
+//       @mixin note-background-color {
+//         background-color: red;
+//       }
+//       :root
+//     }
+//     &--light {
+//       @mixin note-background-color {
+//         background-color: green;
+//       }
+//     }
+//   }
+// }
+
+[theme='dark'] {
+  --bg-color-body: #000000;
+  --bg-color2: #2c2c2c;
+  --font-color: #f4f4f4;
+}
+
+[theme='light'] {
+  --bg-color-body: #eaeaea;
+  --bg-color2: #fff;
+  --font-color: #1c1919;
+}
+
+@mixin custom-scroll-bar-vertical() {
+  &::-webkit-scrollbar {
+    border-radius: 10px;
+    height: 6px;
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #727272;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 10px;
+  }
+}
+
+@mixin text {
+  color: var(--font-color);
+  transition: color $transitionTheme;
+}
+
+@mixin h2 {
+  font-size: 2.1rem;
+  @include text;
+}
+
+@mixin h3 {
+  font-size: 2.4rem;
+  @include text;
+  margin-bottom: 0.7rem;
+}
+
+@mixin transition {
+  transition: color, background-color $transitionTheme;
+}
+
+@mixin button {
+  background-color: var(--font-color);
+  color: var(--bg-color2);
+  border-radius: 4px;
+  @include transition;
+}
+
+//mixini
