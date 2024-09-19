@@ -1,12 +1,16 @@
 <template>
   <div id="app">
-    <router-view />
+    <transition :name="`sheet-chapter-${transitionName}`">
+      <router-view />
+    </transition>
     <input v-model="theme" type="checkbox" />
   </div>
 </template>
 
 <script>
-import { nextTick, onMounted, reactive, ref, watch } from 'vue'
+import { onMounted, computed, ref, watch } from 'vue'
+import store from '@/store'
+
 export default {
   name: 'App',
   components: {},
@@ -15,20 +19,19 @@ export default {
     watch(
       () => theme.value,
       (val) => {
-        console.log(val)
         setTheme(val)
       }
     )
     const setTheme = (val) => {
-      console.log('asdas')
       document.documentElement.setAttribute('theme', val ? 'light' : 'dark')
     }
+    const transitionName = computed(() => store.state.view.transitionMode)
     onMounted(() => {
-      console.log('dark')
       setTheme(false)
     })
     return {
       theme,
+      transitionName,
     }
   },
 }
@@ -42,5 +45,7 @@ export default {
   // text-align: center;
   // color: #2c3e50;
   margin-top: 60px;
+  position: relative;
+  // padding-inline: 5rem;
 }
 </style>

@@ -1,4 +1,4 @@
-import Vue, { ref, reactive, onMounted } from 'vue'
+import { set, ref, reactive, onMounted } from 'vue'
 import { v4 as uuidv4 } from 'uuid'
 
 import { Edit as Todo } from '../components/Todo'
@@ -18,8 +18,9 @@ export default {
     // const router = useRouter()
     // const route = useRoute()
     const formData = reactive({
+      id: '',
       title: '',
-      color: '#eb0000',
+      color: '',
       todos: [
         {
           id: uuidv4(),
@@ -27,7 +28,6 @@ export default {
         },
       ],
     })
-    console.log(formData)
     const todos = ref([''])
     const nextTodo = (index, todo, $event) => {
       const pos = index + 1
@@ -37,15 +37,18 @@ export default {
           text: '',
         })
       }
-      console.log('tab', index, $event)
       // $event.preventDefault()
-      console.log(todos.value)
+    }
+    const changeTodo = (todo, index) => {
+      console.log(todo, index)
+      set(formData.todos, index, todo)
     }
     onMounted(() => {
-      console.log(props.entityNote.id)
+      console.log(props.entityNote.id, 'props.entityNote.id')
       if (props.entityNote.id) {
         for (let key in formData) {
-          formData[key] = props.entityNote[key]
+          // formData[key] = props.entityNote[key]
+          set(formData, key, props.entityNote[key])
         }
       }
     })
@@ -53,6 +56,7 @@ export default {
       formData,
       nextTodo,
       todos,
+      changeTodo,
     }
   },
 }

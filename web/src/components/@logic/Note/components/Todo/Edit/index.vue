@@ -1,11 +1,12 @@
 <template>
-  <li class="d-flex">
+  <li class="d-flex todo">
+    <input class="mr-5" v-model="proxyValue.completed" type="checkbox" />
     <input
       @keydown.tab="$emit('nextTodo', $event)"
       class="field field-text"
       placeholder="Текст"
       type="text"
-      v-model="proxyValue"
+      v-model="proxyValue.text"
     />
   </li>
 </template>

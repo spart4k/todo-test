@@ -8,9 +8,11 @@
 </template>
 
 <script>
-import List from '@/components/@logic/List/Default'
-import { useRoute, useRouter } from 'vue-router/composables'
 import { onMounted } from 'vue'
+import { useRoute, useRouter } from 'vue-router/composables'
+
+import List from '@/components/@logic/List/Default'
+import store from '@/store'
 
 export default {
   name: 'Home-View',
@@ -27,6 +29,7 @@ export default {
     const router = useRouter()
     const route = useRoute()
     const toAdd = () => {
+      // store.commit('view/setMode', 'right')
       router.push({
         name: 'add',
       })

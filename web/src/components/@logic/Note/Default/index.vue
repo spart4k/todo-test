@@ -16,7 +16,7 @@
         v-for="(todo, index) in formData.todos"
         :key="todo.id"
         :todo="todo"
-        v-model="todo.text"
+        @input="changeTodo(todo, index)"
       />
     </ul>
   </form>

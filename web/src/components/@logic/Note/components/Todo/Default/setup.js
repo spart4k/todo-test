@@ -1,16 +1,32 @@
-import Vue from 'vue'
+import { onMounted, ref, watch } from 'vue'
 // import { useStore } from '@/store'
 // import { useRoute, useRouter } from 'vue-router/composables'
 
 export default {
-  name: 'Name',
+  name: 'Note-Edit',
   components: {},
-  props: {},
+  props: {
+    value: {
+      type: String,
+      default: '',
+    },
+    todo: {
+      type: Object,
+      default: () => {},
+    },
+  },
   setup(props, context) {
-    // const store = useStore()
-    // const router = useRouter()
-    // const route = useRoute()
-
-    return {}
+    const { emit } = context
+    const proxyValue = ref('')
+    onMounted(() => {
+      proxyValue.value = props.value
+    })
+    watch(
+      () => proxyValue.value,
+      (val) => emit('input', val)
+    )
+    return {
+      proxyValue,
+    }
   },
 }

@@ -6,20 +6,23 @@ export default {
   name: 'Note-Edit',
   components: {},
   props: {
-    value: {
-      type: String,
-      default: '#ff0000',
+    todo: {
+      type: Object,
+      default: () => {},
     },
   },
   setup(props, context) {
     const { emit } = context
     const proxyValue = ref('')
     onMounted(() => {
-      proxyValue.value = props.value
+      proxyValue.value = props.todo
     })
     watch(
       () => proxyValue.value,
-      (val) => emit('input', val)
+      (val) => emit('input', val),
+      {
+        deep: true,
+      }
     )
     return {
       proxyValue,

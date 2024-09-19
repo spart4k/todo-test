@@ -1,4 +1,4 @@
-import Vue, { ref, onMounted, watch } from 'vue'
+import Vue, { toRef, onMounted, watch } from 'vue'
 
 export default {
   name: 'Color-Picker',
@@ -15,9 +15,9 @@ export default {
   },
   setup(props, context) {
     const { emit } = context
-    const proxyValue = ref('')
+    const proxyValue = toRef(props, 'value')
     onMounted(() => {
-      proxyValue.value = props.value
+      // proxyValue.value = props.value
     })
     watch(
       () => proxyValue.value,

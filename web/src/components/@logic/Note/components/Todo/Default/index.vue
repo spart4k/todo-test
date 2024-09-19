@@ -1,7 +1,12 @@
 <template>
-  <li class="d-flex">
-    <input type="checkbox" />
-    <p class="text-default">todo</p>
+  <li class="d-flex todo">
+    <input :value="todo.completed" class="mr-5" type="checkbox" />
+    <input
+      class="field field-text"
+      placeholder="Текст"
+      type="text"
+      :value="todo.text"
+    />
   </li>
 </template>
 

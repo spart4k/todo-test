@@ -1,4 +1,4 @@
-import { reactive } from 'vue'
+import { computed, reactive } from 'vue'
 // import { useStore } from '@/store'
 import { useRouter } from 'vue-router/composables'
 import store from '@/store'
@@ -11,10 +11,10 @@ export default {
   },
   props: {},
   setup(props, context) {
-    const mockData = store.state.data
+    const mockData = computed(() => store.state.notes.data)
     const router = useRouter()
     const openNote = (note) => {
-      console.log(note)
+      store.commit('view/setMode', 'right')
       router.push({
         name: 'edit',
         params: {
