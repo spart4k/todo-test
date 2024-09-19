@@ -1,18 +1,22 @@
 <template>
   <div class="view view--default">
     <div class="panel justify-between">
-      <Btn-Default @click="toPrev" class="mb-5">Назад</Btn-Default>
-      <Btn-Default @click="save" class="mb-5">{{ btnName }}</Btn-Default>
+      <UI-Btn-Default @click="toPrev" class="mb-5">Назад</UI-Btn-Default>
+      <UI-Btn-Default @click="save" class="mb-5">{{ btnName }}</UI-Btn-Default>
     </div>
-    <Note ref="note" v-if="!loading" :entityNote="entityNote" />
+    <div class="justify-center">
+      <Note ref="note" v-if="!loading" :entityNote="entityNote" />
+    </div>
   </div>
 </template>
 
 <script>
 import { onMounted, ref, computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router/composables'
-import store from '@/store'
 import { Default as Note } from '@/components/@logic/Note'
+import { v4 as uuidv4 } from 'uuid'
+
+import store from '@/store'
 
 export default {
   name: 'Home-View',
@@ -48,10 +52,19 @@ export default {
     const save = () => {
       toPrev()
       console.log(note.value.formData)
-      store.dispatch('notes/saveNote', {
-        id: entityNote.value.id,
-        note: note.value.formData,
-      })
+      if (btnName.value === 'Сохранить') {
+        store.dispatch('notes/saveNote', {
+          id: entityNote.value.id,
+          note: note.value.formData,
+        })
+      } else {
+        store.dispatch('notes/addNote', {
+          note: {
+            id: uuidv4(),
+            ...note.value.formData,
+          },
+        })
+      }
     }
     onMounted(() => {
       loading.value = ref(true)

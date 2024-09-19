@@ -7,6 +7,11 @@
   justify-content: space-between;
 }
 
+.justify-center {
+  display: flex;
+  justify-content: center;
+}
+
 .align-center {
   display: flex;
   align-items: center;
@@ -17,8 +22,17 @@
   align-items: start;
 }
 
+.align-baseline {
+  display: flex;
+  align-items: baseline;
+}
+
 .title-h3 {
   @include h3;
+}
+
+.title-h2 {
+  @include h2;
 }
 
 .text-default {
@@ -26,6 +40,7 @@
 }
 
 $spaceamounts: (
+  3,
   5,
   10,
   15,

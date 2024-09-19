@@ -4,16 +4,20 @@
       <router-view />
     </transition>
     <input v-model="theme" type="checkbox" />
+    <Alert />
   </div>
 </template>
 
 <script>
 import { onMounted, computed, ref, watch } from 'vue'
+import Alert from '@/components/@logic/Alert/Default'
 import store from '@/store'
 
 export default {
   name: 'App',
-  components: {},
+  components: {
+    Alert,
+  },
   setup() {
     const theme = ref(false)
     watch(
@@ -44,8 +48,10 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   // text-align: center;
   // color: #2c3e50;
-  margin-top: 60px;
   position: relative;
   // padding-inline: 5rem;
+  width: 93rem;
+  margin: 6rem auto;
+  overflow: hidden;
 }
 </style>

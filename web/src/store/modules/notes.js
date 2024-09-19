@@ -1,4 +1,7 @@
 import { set } from 'vue'
+
+const findNote = (state, id) => state.data.findIndex((el) => el.id === id)
+
 export default {
   namespaced: true,
   state: {
@@ -266,17 +269,29 @@ export default {
     ],
   },
   mutations: {
-    setNote(state, { id, note }) {
-      let noteIndex = state.data.findIndex((el) => el.id === id)
-      // state.data = user
+    setNote(state, { note }) {
+      let noteIndex = findNote(state, note.id)
       set(state.data, noteIndex, note)
-      // console.log(currentNote)
+    },
+    addNote(state, { id, note }) {
+      state.data.push(note)
+    },
+    removeNote(state, id) {
+      console.log('remove', id)
+      let noteIndex = findNote(state, id)
+      state.data.splice(noteIndex, 1)
     },
   },
   actions: {
-    async saveNote({ commit }, { id, note }) {
-      commit('notes/setNote', { id, note }, { root: true })
-      // commit('saveNoteChange', currentNote)
+    async saveNote({ commit }, { note }) {
+      commit('notes/setNote', { note }, { root: true })
+    },
+    async addNote({ commit }, { note }) {
+      commit('notes/addNote', { note }, { root: true })
+    },
+    async removeNote({ commit }, id) {
+      console.log('remove', id)
+      commit('notes/removeNote', id, { root: true })
     },
   },
 }

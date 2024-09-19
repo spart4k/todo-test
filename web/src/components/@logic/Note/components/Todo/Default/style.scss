@@ -1,1 +1,11 @@
 @import '../style.scss';
+.todo {
+  width: 100%;
+  &-remove {
+    $iconWidth: 1.5rem;
+    width: $iconWidth;
+    height: $iconWidth;
+    @include text;
+    cursor: pointer;
+  }
+}

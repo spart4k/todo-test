@@ -1,5 +1,5 @@
 <template>
-  <label class="color-picker">
+  <label class="UI-Color-Picker">
     <input
       :disabled="readonly"
       v-model="proxyValue"

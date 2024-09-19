@@ -5,11 +5,13 @@ import router from './router'
 
 import BtnDefault from '@/components/@ui/Button/default'
 import ColorPicker from '@/components/@ui/ColorPicker/default'
+import Checkbox from '@/components/@ui/Checkbox/default'
 
 import '@/assets/styles/main.scss'
 
-Vue.component('Btn-Default', BtnDefault)
-Vue.component('Color-Picker', ColorPicker)
+Vue.component('UI-Btn-Default', BtnDefault)
+Vue.component('UI-Color-Picker', ColorPicker)
+Vue.component('UI-Checkbox', Checkbox)
 
 Vue.config.productionTip = false
 

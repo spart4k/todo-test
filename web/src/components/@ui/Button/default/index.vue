@@ -1,7 +1,7 @@
 <template>
   <button
     @click="$emit('click')"
-    :class="`button--${color}`"
+    :class="[`button--${color}`, `button--${type}`]"
     class="button button--default"
   >
     <slot />

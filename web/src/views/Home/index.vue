@@ -1,7 +1,7 @@
 <template>
   <div class="view view--default">
     <div class="panel">
-      <Btn-Default @click="toAdd" class="mb-5">Добавить</Btn-Default>
+      <UI-Btn-Default @click="toAdd" class="mb-5">Добавить</UI-Btn-Default>
     </div>
     <List />
   </div>
@@ -29,7 +29,7 @@ export default {
     const router = useRouter()
     const route = useRoute()
     const toAdd = () => {
-      // store.commit('view/setMode', 'right')
+      store.commit('view/setMode', 'right')
       router.push({
         name: 'add',
       })

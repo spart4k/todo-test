@@ -1,8 +1,8 @@
 import { set, ref, reactive, onMounted } from 'vue'
 import { v4 as uuidv4 } from 'uuid'
 
-import { Edit as Todo } from '../components/Todo'
-
+import { Default as Todo } from '../components/Todo'
+import _ from 'lodash'
 export default {
   name: 'Todo-Default',
   components: {
@@ -43,12 +43,22 @@ export default {
       console.log(todo, index)
       set(formData.todos, index, todo)
     }
+    const removeTodo = (index) => {
+      formData.todos.splice(index, 1)
+    }
     onMounted(() => {
       console.log(props.entityNote.id, 'props.entityNote.id')
       if (props.entityNote.id) {
+        const cloneEntity = _.cloneDeep(props.entityNote)
         for (let key in formData) {
           // formData[key] = props.entityNote[key]
-          set(formData, key, props.entityNote[key])
+          if (!Array.isArray(key)) {
+            set(formData, key, cloneEntity[key])
+          } else {
+            for (let subKey in key) {
+              set(formData[key], subKey, cloneEntity[key][subKey])
+            }
+          }
         }
       }
     })
@@ -57,6 +67,7 @@ export default {
       nextTodo,
       todos,
       changeTodo,
+      removeTodo,
     }
   },
 }

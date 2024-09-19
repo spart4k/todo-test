@@ -1,5 +1,6 @@
 .note {
   &--short {
+    position: relative;
     $notePadding: 1.5rem;
     width: 30rem;
     margin-right: 1rem;
@@ -8,7 +9,16 @@
     background-color: var(--bg-color2);
     transition: background-color $transitionTheme;
     border-radius: 5px;
-    padding: $notePadding;
+    padding: $notePadding 4rem $notePadding $notePadding;
     cursor: pointer;
+  }
+  &-remove {
+    $iconWidth: 2rem;
+    position: absolute;
+    width: $iconWidth;
+    height: $iconWidth;
+    right: 1rem;
+    top: 1rem;
+    @include text;
   }
 }

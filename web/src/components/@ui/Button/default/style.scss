@@ -4,4 +4,14 @@
   display: flex;
   justify-content: center;
   @include button;
+  border: 0;
+  border-radius: 5px;
+  &--success {
+    background-color: green;
+    color: #fff;
+  }
+  &--error {
+    background-color: #b70707;
+    color: #fff;
+  }
 }

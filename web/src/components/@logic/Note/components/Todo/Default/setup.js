@@ -1,4 +1,4 @@
-import { onMounted, ref, watch } from 'vue'
+import { onMounted, toRef, watch } from 'vue'
 // import { useStore } from '@/store'
 // import { useRoute, useRouter } from 'vue-router/composables'
 
@@ -14,12 +14,19 @@ export default {
       type: Object,
       default: () => {},
     },
+    canRemove: {
+      type: Boolean,
+      default: false,
+    },
   },
   setup(props, context) {
     const { emit } = context
-    const proxyValue = ref('')
+    const proxyValue = toRef(props, 'todo')
+    const removeTodo = () => {
+      emit('removeTodo')
+    }
     onMounted(() => {
-      proxyValue.value = props.value
+      // proxyValue.value = props.value
     })
     watch(
       () => proxyValue.value,
@@ -27,6 +34,7 @@ export default {
     )
     return {
       proxyValue,
+      removeTodo,
     }
   },
 }

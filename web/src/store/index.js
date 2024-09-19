@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 
 import notes from './modules/notes'
 import view from './modules/view'
+import alert from './modules/alert'
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
@@ -13,6 +14,7 @@ const store = new Vuex.Store({
   modules: {
     notes,
     view,
+    alert,
   },
 })
 
