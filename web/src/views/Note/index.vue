@@ -60,8 +60,8 @@ export default {
       } else {
         store.dispatch('notes/addNote', {
           note: {
-            id: uuidv4(),
             ...note.value.formData,
+            id: uuidv4(),
           },
         })
       }

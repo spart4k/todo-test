@@ -274,10 +274,10 @@ export default {
       set(state.data, noteIndex, note)
     },
     addNote(state, { id, note }) {
+      console.log(note)
       state.data.push(note)
     },
     removeNote(state, id) {
-      console.log('remove', id)
       let noteIndex = findNote(state, id)
       state.data.splice(noteIndex, 1)
     },
